@@ -1,0 +1,1019 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>高考志愿最终报告</title>
+  <style>
+    :root {
+      --bg: oklch(97.5% 0.006 245);
+      --surface: oklch(100% 0 0);
+      --surface-soft: oklch(98.6% 0.004 245);
+      --fg: oklch(23% 0.025 255);
+      --muted: oklch(42% 0.02 255);
+      --subtle: oklch(55% 0.018 255);
+      --border: oklch(88% 0.012 250);
+      --accent: oklch(43% 0.105 30);
+      --warn: oklch(52% 0.11 70);
+      --safe: oklch(43% 0.085 155);
+      --blue: oklch(43% 0.09 240);
+      --accent-soft: color-mix(in oklch, var(--accent) 12%, transparent);
+      --warn-soft: color-mix(in oklch, var(--warn) 13%, transparent);
+      --safe-soft: color-mix(in oklch, var(--safe) 12%, transparent);
+      --blue-soft: color-mix(in oklch, var(--blue) 12%, transparent);
+      --fg-soft: color-mix(in oklch, var(--fg) 6%, transparent);
+      --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+      --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+      --container: 1440px;
+      --gutter: clamp(18px, 2.8vw, 38px);
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 24px;
+      --space-6: 32px;
+      --space-7: 48px;
+      --space-8: 64px;
+      --radius: 8px;
+      --radius-lg: 12px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.68;
+      font-kerning: normal;
+      font-optical-sizing: auto;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    button:disabled { cursor: not-allowed; opacity: .56; }
+    :focus-visible {
+      outline: 3px solid color-mix(in oklch, var(--accent) 72%, var(--surface));
+      outline-offset: 3px;
+    }
+    h1, h2, h3, h4, p { margin: 0; }
+    h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 750; text-wrap: balance; }
+    p { max-width: 72ch; text-wrap: pretty; }
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+    .section { padding: clamp(40px, 6vw, 72px) 0; }
+    .section + .section { border-top: 1px solid var(--border); }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--border);
+      background: color-mix(in oklch, var(--bg) 92%, transparent);
+      backdrop-filter: blur(14px);
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      padding: 12px var(--gutter);
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+    .brand { display: grid; gap: 2px; }
+    .brand strong { font-family: var(--font-display); font-size: 1rem; letter-spacing: 0; }
+    .brand span { color: var(--subtle); font-size: .75rem; }
+    .nav { display: flex; gap: var(--space-4); align-items: center; color: var(--muted); font-size: .875rem; }
+    .nav a:hover { color: var(--fg); }
+    .print-btn, .filter-btn, .small-btn {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--fg);
+      min-height: 44px;
+      padding: 8px 14px;
+      transition: border-color .15s ease, background .15s ease, transform .08s ease;
+    }
+    .print-btn:hover, .filter-btn:hover, .small-btn:hover { border-color: var(--fg); }
+    .print-btn:active, .filter-btn:active, .small-btn:active { transform: translateY(1px); }
+    .hero { min-height: auto; display: grid; align-items: center; padding: clamp(34px, 6vw, 72px) 0 clamp(28px, 5vw, 56px); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(360px, .88fr); gap: clamp(24px, 3vw, 44px); align-items: start; }
+    .paper {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 2px 8px color-mix(in oklch, var(--fg) 5%, transparent);
+    }
+    .hero-copy { padding: clamp(28px, 4vw, 44px); display: flex; flex-direction: column; justify-content: flex-start; gap: var(--space-6); }
+    .kicker {
+      color: var(--accent);
+      font-family: var(--font-body);
+      font-size: .8125rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: none;
+      margin-bottom: var(--space-3);
+    }
+    .hero h1 { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-4); row-gap: var(--space-3); font-size: clamp(2.25rem, 3.25vw, 3.75rem); line-height: 1.08; letter-spacing: 0; max-width: 100%; }
+    .title-main { white-space: nowrap; }
+    .title-subject {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      margin-top: 0;
+      border: 1px solid color-mix(in oklch, var(--blue) 28%, var(--border));
+      border-radius: 999px;
+      padding: 6px 12px;
+      background: var(--blue-soft);
+      color: color-mix(in oklch, var(--fg) 82%, var(--blue));
+      font-size: .9375rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .position-note {
+      margin-top: var(--space-5);
+      max-width: 56rem;
+      font-size: 1.125rem;
+      line-height: 1.78;
+    }
+    .hero-copy > .notice { margin-top: var(--space-2); }
+    .muted { color: var(--muted); }
+    .profile-card { padding: clamp(24px, 3vw, 34px); display: grid; gap: var(--space-5); }
+    .profile-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+    .profile-item { border-top: 1px solid var(--border); padding-top: var(--space-3); }
+    .profile-item span, .label { display: block; color: var(--subtle); font-size: .8125rem; }
+    .profile-item strong { display: block; font-family: var(--font-mono); font-size: 1.25rem; line-height: 1.35; margin-top: var(--space-1); }
+    .goal-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-2); }
+    .goal {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--space-3);
+      background: var(--surface-soft);
+      min-height: 82px;
+    }
+    .goal b { display: block; font-size: .875rem; margin-bottom: var(--space-1); }
+    .goal span { color: var(--muted); font-size: .8125rem; line-height: 1.5; display: block; }
+    .notice {
+      border: 1px solid color-mix(in oklch, var(--accent) 28%, var(--border));
+      padding: var(--space-4);
+      background: var(--accent-soft);
+      border-radius: var(--radius);
+      color: color-mix(in oklch, var(--fg) 86%, var(--accent));
+      line-height: 1.7;
+    }
+    .section-head { display: grid; grid-template-columns: minmax(0, .8fr) minmax(260px, .48fr); gap: var(--space-6); align-items: end; margin-bottom: var(--space-6); }
+    .section h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1.22; letter-spacing: 0; }
+    .section-lead { color: var(--muted); max-width: 45rem; font-size: 1rem; line-height: 1.72; }
+    .logic-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+    .logic-card { padding: var(--space-5); min-height: 220px; }
+    .logic-card h3, .school-title h3, .route-card h3 { font-size: 1.25rem; line-height: 1.32; margin-bottom: var(--space-2); }
+    .plain-list { padding: 0; margin: var(--space-3) 0 0; list-style: none; display: grid; gap: var(--space-2); }
+    .plain-list li { position: relative; padding-left: 18px; color: var(--muted); line-height: 1.68; }
+    .plain-list li::before { content: ""; position: absolute; left: 0; top: .78em; width: 6px; height: 6px; border-radius: 999px; background: var(--accent); opacity: .8; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); }
+    table { width: 100%; border-collapse: collapse; min-width: 1320px; font-size: .8125rem; line-height: 1.5; table-layout: fixed; }
+    th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; overflow-wrap: normal; word-break: normal; }
+    th { color: var(--muted); font-weight: 700; font-size: .75rem; letter-spacing: .02em; white-space: nowrap; background: var(--surface-soft); }
+    tr:last-child td { border-bottom: 0; }
+    .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .overview-tier-col { width: 64px; }
+    .overview-school-col { width: 136px; }
+    .overview-city-col { width: 96px; }
+    .overview-major-col { width: 260px; }
+    .overview-score-col { width: 86px; }
+    .overview-rank-col { width: 112px; }
+    .overview-diff-col { width: 148px; }
+    .overview-reason-col { width: 214px; }
+    .overview-risk-col { width: 230px; }
+    .overview-key-col { width: 70px; }
+    td.keep-line { white-space: nowrap; }
+    td.overview-school { font-weight: 650; line-height: 1.45; }
+    td.overview-major-cell { line-height: 1.55; overflow: hidden; }
+    td.overview-reason-cell, td.overview-risk-cell { line-height: 1.58; overflow-wrap: anywhere; }
+    .group-chip {
+      display: block;
+      width: 100%;
+      margin: 0 0 4px;
+      white-space: nowrap;
+      color: var(--fg);
+    }
+    .group-chip:last-child { margin-bottom: 0; }
+    .group-note { white-space: normal; overflow-wrap: anywhere; color: var(--muted); }
+    .tier {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: .75rem;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .tier-reach { color: var(--accent); background: var(--accent-soft); }
+    .tier-match { color: var(--blue); background: var(--blue-soft); }
+    .tier-safe { color: var(--safe); background: var(--safe-soft); }
+    .tier-backup { color: var(--muted); background: var(--fg-soft); }
+    .filters { display: flex; gap: var(--space-2); flex-wrap: wrap; margin-bottom: var(--space-5); }
+    .filter-btn.active, .filter-btn[aria-pressed="true"] { background: var(--fg); color: var(--surface); border-color: var(--fg); }
+    .school-list { display: grid; gap: var(--space-4); }
+    .school-card { overflow: hidden; }
+    .school-card[hidden] { display: none; }
+    .school-button {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      padding: var(--space-5);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--space-4);
+      text-align: left;
+      min-height: 86px;
+      transition: background .15s ease;
+    }
+    .school-button:hover { background: color-mix(in oklch, var(--bg) 48%, transparent); }
+    .school-title { display: grid; gap: var(--space-2); }
+    .school-meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 3px 9px;
+      color: var(--muted);
+      font-size: .75rem;
+      background: var(--surface);
+    }
+    .school-arrow { width: 44px; height: 44px; border: 1px solid var(--border); border-radius: 999px; display: grid; place-items: center; color: var(--muted); transition: transform .15s ease, border-color .15s ease, color .15s ease; }
+    .school-card.open .school-arrow { transform: rotate(180deg); }
+    .school-detail { display: none; padding: 0 var(--space-5) var(--space-5); }
+    .school-card.open .school-detail { display: block; }
+    .detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5) var(--space-6); }
+    .detail-box { border-top: 1px solid var(--border); padding-top: var(--space-4); }
+    .detail-box h4 { font-size: .875rem; margin-bottom: var(--space-2); color: var(--fg); }
+    .detail-box p, .detail-box li { color: var(--muted); font-size: .9375rem; line-height: 1.72; }
+    .detail-box ul { margin: 0; padding-left: 18px; }
+    .risk-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+    .risk-card { padding: var(--space-5); }
+    .risk-card h3 { margin-bottom: var(--space-2); font-size: 1.125rem; line-height: 1.35; }
+    .risk-rows { display: grid; gap: var(--space-2); margin-top: var(--space-4); }
+    .risk-row { display: grid; grid-template-columns: 112px 1fr; gap: var(--space-3); border-top: 1px solid var(--border); padding-top: var(--space-2); font-size: .875rem; line-height: 1.6; }
+    .route-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
+    .route-card { padding: var(--space-5); display: grid; gap: var(--space-3); }
+    .route-line { display: grid; grid-template-columns: 86px 1fr; gap: var(--space-3); border-top: 1px solid var(--border); padding-top: var(--space-3); }
+    .route-line span:first-child { color: var(--subtle); font-size: .8125rem; }
+    .route-line strong { font-weight: 650; line-height: 1.62; }
+    .check-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); }
+    .check-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--space-3);
+      background: var(--surface);
+      line-height: 1.55;
+    }
+    .check-item input { margin-top: 5px; accent-color: var(--accent); }
+    .source-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); }
+    .source-card { padding: var(--space-4); }
+    .source-card h3 { font-size: 1rem; margin-bottom: var(--space-2); }
+    .source-card p { color: var(--muted); font-size: .875rem; line-height: 1.65; }
+    .footer { padding: 30px 0 48px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); }
+    .empty-state, .fatal-state {
+      display: none;
+      padding: 22px;
+      color: var(--muted);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+    .fatal-state { margin: 24px var(--gutter); color: var(--fg); border-style: solid; border-color: color-mix(in oklch, var(--warn) 38%, var(--border)); background: var(--warn-soft); }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 980px) {
+      .nav { display: none; }
+      .hero { min-height: auto; }
+      .hero-grid, .section-head, .logic-grid, .detail-grid, .risk-grid, .route-grid, .source-grid { grid-template-columns: 1fr; }
+      .check-grid { grid-template-columns: repeat(2, 1fr); }
+      .table-wrap { border: 0; background: transparent; overflow: visible; }
+      .table-wrap table { display: block; min-width: 0; width: 100%; font-size: .9375rem; }
+      .table-wrap colgroup, .table-wrap thead { display: none; }
+      .table-wrap tbody { display: grid; gap: var(--space-3); }
+      .table-wrap tr {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        background: var(--surface);
+        overflow: hidden;
+      }
+      .table-wrap td {
+        display: grid;
+        grid-template-columns: 96px minmax(0, 1fr);
+        gap: var(--space-3);
+        align-items: start;
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--border);
+        white-space: normal;
+      }
+      .table-wrap td::before {
+        content: attr(data-label);
+        color: var(--subtle);
+        font-size: .8125rem;
+        font-weight: 700;
+        line-height: 1.45;
+      }
+      .table-wrap td:last-child { border-bottom: 0; }
+      .table-wrap td.overview-tier {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        background: var(--surface-soft);
+      }
+      .table-wrap td.overview-tier::before {
+        content: attr(data-school);
+        color: var(--fg);
+        font-size: 1rem;
+        font-weight: 750;
+      }
+      .table-wrap td.overview-tier .tier { justify-self: end; }
+      .table-wrap td.overview-school, .table-wrap td.overview-city { display: none; }
+      .table-wrap td.num { font-size: .9375rem; }
+      .group-chip { white-space: normal; overflow-wrap: anywhere; }
+    }
+    @media (max-width: 640px) {
+      .topbar-inner { align-items: flex-start; flex-wrap: wrap; }
+      .print-btn { padding-inline: 11px; width: 100%; }
+      .hero-copy, .profile-card { padding: 22px; }
+      .profile-list, .goal-grid, .check-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.25rem; max-width: 100%; }
+      .title-main { white-space: normal; }
+      .title-subject { white-space: normal; border-radius: var(--radius); }
+      .position-note { font-size: 1rem; line-height: 1.72; }
+      .table-wrap td { grid-template-columns: 82px minmax(0, 1fr); padding: 10px 12px; }
+      .table-wrap td.overview-tier { grid-template-columns: minmax(0, 1fr) auto; }
+      .school-button { grid-template-columns: 1fr; padding: 18px; }
+      .school-detail { padding: 0 18px 18px; }
+      .risk-row, .route-line { grid-template-columns: 1fr; gap: 3px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+    @media print {
+      @page { margin: 14mm; size: A4; }
+      body { background: var(--surface); color: var(--fg); font-size: 11pt; line-height: 1.55; }
+      .topbar, .filters, .print-btn, .small-btn, .school-arrow { display: none !important; }
+      .container { max-width: none; padding: 0; }
+      .hero { min-height: auto; padding: 0 0 18mm; }
+      .hero-grid, .section-head, .logic-grid, .detail-grid, .risk-grid, .route-grid, .source-grid, .check-grid { grid-template-columns: 1fr 1fr; gap: 8mm; }
+      .paper, .table-wrap, .check-item { box-shadow: none; break-inside: avoid; border-color: color-mix(in oklch, var(--fg) 22%, var(--border)); }
+      .section { padding: 10mm 0; break-inside: auto; }
+      .section + .section { border-top: 1px solid var(--border); }
+      .school-card { break-inside: avoid; }
+      .school-detail { display: block !important; }
+      .notice { background: transparent; }
+      table { min-width: 0; font-size: 8.5pt; }
+      th, td { padding: 5pt; }
+      a[href]::after { content: ""; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar" data-od-id="topnav">
+    <div class="topbar-inner">
+      <a class="brand" href="#top" aria-label="回到报告顶部">
+        <strong>高考志愿最终报告</strong>
+        <span>正式方案 · 填报前复核</span>
+      </a>
+      <nav class="nav" aria-label="报告目录">
+        <a href="#logic">筛选逻辑</a>
+        <a href="#overview">冲稳保</a>
+        <a href="#schools">学校卡片</a>
+        <a href="#risks">专业组风险</a>
+        <a href="#checklist">待核清单</a>
+      </nav>
+      <button class="print-btn" id="printReport" type="button">打印 / 导出 PDF</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="fatal-state" id="fatalState" role="alert"></div>
+    <section class="hero" data-od-id="student-position">
+      <div class="container hero-grid">
+        <div class="paper hero-copy">
+          <div>
+            <p class="kicker">考生定位 · 志愿方案</p>
+            <h1 id="studentTitle">考生定位</h1>
+            <p class="position-note" id="positionNote"></p>
+          </div>
+          <div class="notice" id="coreTarget"></div>
+        </div>
+        <aside class="paper profile-card" aria-label="考生基本信息">
+          <div>
+            <p class="kicker">基本信息</p>
+            <div class="profile-list" id="profileList"></div>
+          </div>
+          <div>
+            <span class="label">本次核心目标</span>
+            <div class="goal-grid" id="goalGrid"></div>
+          </div>
+          <div class="notice" id="riskPreference"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="logic" data-od-id="screening-logic">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker">筛选逻辑</p>
+            <h2>先看清本次为什么这样选。</h2>
+          </div>
+          <p class="section-lead">这部分不用复杂术语，只讲清楚：本次优先什么、降低什么、为什么有些看起来“名气大”的学校没有放到前面。</p>
+        </div>
+        <div class="logic-grid" id="logicGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="overview" data-od-id="tier-overview">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker">冲稳保总览</p>
+            <h2>总览先看冲稳保队形。</h2>
+          </div>
+          <p class="section-lead">表格用于快速看结构，详细理由和风险放到后面的学校卡片里。录取数据请以页面下方来源和正式复核口径为准。</p>
+        </div>
+        <div class="table-wrap">
+          <table aria-label="冲稳保总览表">
+            <colgroup>
+              <col class="overview-tier-col" />
+              <col class="overview-school-col" />
+              <col class="overview-city-col" />
+              <col class="overview-major-col" />
+              <col class="overview-score-col" />
+              <col class="overview-rank-col" />
+              <col class="overview-diff-col" />
+              <col class="overview-reason-col" />
+              <col class="overview-risk-col" />
+              <col class="overview-key-col" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th>档位</th>
+                <th>学校</th>
+                <th>城市</th>
+                <th>专业组 / 专业</th>
+                <th>往年最低分</th>
+                <th>往年最低位次</th>
+                <th>位次差</th>
+                <th>推荐理由</th>
+                <th>最大风险</th>
+                <th>重点候选</th>
+              </tr>
+            </thead>
+            <tbody id="overviewBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="schools" data-od-id="school-cards">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker">学校详细卡片</p>
+            <h2>每所学校单独判断，结论和风险分开看。</h2>
+          </div>
+          <p class="section-lead">点击学校可展开详情；可按冲、稳、保、备选筛选。方案状态用于记录当前判断，不代表最终填报顺序。</p>
+        </div>
+        <div class="filters" aria-label="按档位筛选学校">
+          <button class="filter-btn active" data-filter="all" type="button" aria-pressed="true">全部</button>
+          <button class="filter-btn" data-filter="冲" type="button" aria-pressed="false">冲</button>
+          <button class="filter-btn" data-filter="稳" type="button" aria-pressed="false">稳</button>
+          <button class="filter-btn" data-filter="保" type="button" aria-pressed="false">保</button>
+          <button class="filter-btn" data-filter="备选" type="button" aria-pressed="false">备选</button>
+        </div>
+        <p class="sr-only" id="filterStatus" aria-live="polite"></p>
+        <div class="empty-state" id="emptyState" role="status">当前筛选下没有学校。请切换到“全部”或其他档位查看候选。</div>
+        <div class="school-list" id="schoolList"></div>
+      </div>
+    </section>
+
+    <section class="section" id="risks" data-od-id="major-group-risks">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker">专业组风险</p>
+            <h2>新高考最容易误解的是“进校不等于进想读专业”。</h2>
+          </div>
+          <p class="section-lead">这里单独把专业组拆开看：喜欢、能接受、要避开，以及调剂、收费、校区、体检等风险。</p>
+        </div>
+        <div class="risk-grid" id="riskGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="routes" data-od-id="route-comparisons">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker">路线对比</p>
+            <h2>不是只有一套答案，先看家庭更看重什么。</h2>
+          </div>
+          <p class="section-lead">每条路线都有得到和牺牲。正式填报时可以把路线合并，而不是机械选择某一条。</p>
+        </div>
+        <div class="route-grid" id="routeGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="checklist" data-od-id="final-checklist">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker">最终待核清单</p>
+            <h2>填报前请逐项核实。</h2>
+          </div>
+          <p class="section-lead">建议把打勾结果留存。未核实项不宜默认“应该没问题”。</p>
+        </div>
+        <div class="check-grid" id="checkGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="sources" data-od-id="data-sources">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker">数据来源</p>
+            <h2>数据用于辅助判断，最终回到官方核验。</h2>
+          </div>
+          <p class="section-lead">本页数据用于建立志愿方案框架。正式填报前，请以省考试院招生计划书、高校招生网和当年招生章程为准。</p>
+        </div>
+        <div class="source-grid" id="sourceGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" data-od-id="footer">
+    <div class="container">
+      <p>高考志愿最终报告 · 正式填报前请以省考试院招生计划书、高校招生网和当年招生章程为准。</p>
+    </div>
+  </footer>
+
+  <script>
+    const reportData = {
+      studentProfile: {
+        province: "示例省份",
+        subjectType: "物理类 / 理科方向",
+        score: 562,
+        rank: 32800,
+        batch: "本科批",
+        positioning: "这个位次更适合把重点放在比较好的公办本科、省重点和行业特色院校；少量双一流边缘或热门城市院校可以作为冲刺，但不能把主方案压在高风险学校上。",
+        coreTarget: "本次核心目标：优先保证公办本科和专业匹配，在城市资源、学校层次、升学潜力之间做均衡，不为了学校名气牺牲过多专业安全。",
+        riskPreference: "风险偏好：均衡。可以保留 2-3 所冲刺，但主填报应以稳妥和可接受专业组为主。",
+        goals: [
+          { name: "升学", note: "关注硕士点、学科基础、考研氛围" },
+          { name: "就业", note: "看专业出口、城市实习和行业认可" },
+          { name: "城市", note: "优先省会、区域中心和产业匹配城市" },
+          { name: "层次", note: "公办本科、省重点、行业特色院校" },
+          { name: "专业", note: "工科、数据、经管交叉方向优先" },
+          { name: "稳妥度", note: "避免专业组过杂和高收费误入" }
+        ]
+      },
+      strategySummary: {
+        priorities: [
+          "优先公办本科和专业可接受度，不只看学校名字。",
+          "升学方向看硕士点、学院基础、学习氛围和近年考研去向。",
+          "就业方向看城市产业、实习机会、校企合作和专业出口。",
+          "同等条件下，省会和产业城市优先于交通不便、资源弱的城市。"
+        ],
+        downgraded: [
+          "专业组中混入明显不接受专业的学校降权。",
+          "高收费、中外合作、校区不清楚的专业组暂不作为核心候选。",
+          "经济、法学、师范等若家庭不偏好，先放在备选或待沟通位置。",
+          "只靠往年最低分贴线、但招生人数很少的学校降低信任度。"
+        ],
+        explanation: "这份方案不是把分数能碰到的学校全部列出来，而是先筛掉家长和孩子明显不接受的方向，再在同一分数层里比较学校平台、专业出口、城市资源和录取稳定性。"
+      },
+      recommendationTiers: [
+        { tier: "冲", school: "西南交通大学希望学院（示例）", city: "成都", majorGroup: "计算机类 / 电子信息类", minScore: 568, minRank: 30200, rankDiff: "-2600", reason: "城市和专业方向匹配，适合保留小幅冲刺。", risk: "最低位次高于考生，且热门专业波动大。", keyCandidate: "否" },
+        { tier: "冲", school: "四川轻化工大学（示例）", city: "自贡 / 宜宾", majorGroup: "自动化 / 计算机 / 机械", minScore: 566, minRank: 30950, rankDiff: "-1850", reason: "工科应用基础较明确，部分专业值得冲。", risk: "校区和专业组细分需核实。", keyCandidate: "是" },
+        { tier: "冲", school: "重庆理工大学（示例）", city: "重庆", majorGroup: "车辆 / 电子 / 数据类", minScore: 565, minRank: 31500, rankDiff: "-1300", reason: "城市和行业背景较好，适合作为高质量冲刺。", risk: "热门工科专业分差可能拉大。", keyCandidate: "是" },
+        { tier: "稳", school: "成都工业学院（示例）", city: "成都", majorGroup: "智能制造 / 软件工程", minScore: 559, minRank: 34000, rankDiff: "+1200", reason: "成都本地应用型工科，匹配就业目标。", risk: "专业组混杂程度需看当年计划。", keyCandidate: "是" },
+        { tier: "稳", school: "西华大学（示例）", city: "成都", majorGroup: "机械 / 车辆 / 计算机", minScore: 557, minRank: 35200, rankDiff: "+2400", reason: "省属综合性平台，工科和城市资源都较均衡。", risk: "部分专业热度高，不能只按校线判断。", keyCandidate: "是" },
+        { tier: "稳", school: "成都大学（示例）", city: "成都", majorGroup: "数据科学 / 网络工程", minScore: 555, minRank: 36100, rankDiff: "+3300", reason: "城市资源好，适合就业和实习导向。", risk: "热门专业可能抬升，需核招生数。", keyCandidate: "是" },
+        { tier: "稳", school: "绵阳师范学院（示例）", city: "绵阳", majorGroup: "信息技术 / 电子商务", minScore: 552, minRank: 37600, rankDiff: "+4800", reason: "风险相对温和，可作为稳中偏保。", risk: "若排斥师范背景，需要确认专业归属。", keyCandidate: "否" },
+        { tier: "保", school: "宜宾学院（示例）", city: "宜宾", majorGroup: "电子信息 / 软件相关", minScore: 548, minRank: 40200, rankDiff: "+7400", reason: "保底空间较好，专业方向仍可接受。", risk: "学校层次不如成都核心候选。", keyCandidate: "是" },
+        { tier: "保", school: "内江师范学院（示例）", city: "内江", majorGroup: "计算机 / 物联网", minScore: 545, minRank: 41800, rankDiff: "+9000", reason: "用于托底，保证本科录取确定性。", risk: "城市资源和行业机会偏弱。", keyCandidate: "否" },
+        { tier: "保", school: "攀枝花学院（示例）", city: "攀枝花", majorGroup: "电气 / 材料 / 机械", minScore: 542, minRank: 43600, rankDiff: "+10800", reason: "保底余量较大，适合稳妥家庭。", risk: "城市距离和生活适应度要提前确认。", keyCandidate: "否" },
+        { tier: "备选", school: "省外行业特色院校 A（示例）", city: "长三角普通地级市", majorGroup: "交通运输 / 物流工程", minScore: 550, minRank: 38900, rankDiff: "+6100", reason: "行业方向清楚，适合愿意出省家庭。", risk: "地域接受度和就业回流需沟通。", keyCandidate: "否" },
+        { tier: "备选", school: "省外公办本科 B（示例）", city: "华中区域中心", majorGroup: "计算机类 / 管理科学", minScore: 547, minRank: 40700, rankDiff: "+7900", reason: "可作为扩展池，避免本省竞争过集中。", risk: "学校和专业认可度需进一步查证。", keyCandidate: "否" }
+      ],
+      schoolCards: [
+        {
+          id: "s1", tier: "冲", feedback: "犹豫", name: "西南交通大学希望学院（示例）", city: "成都",
+          tag: "成都周边偏工程应用型本科",
+          why: "孩子如果非常看重成都和工科方向，可以把它放在小幅冲刺位，但不建议作为主稳学校。",
+          features: ["轨道交通、土建和工程管理相关课程较集中。", "成都周边实习便利性相对好，适合工程应用取向。", "需要进一步核实学院性质、学费和近年就业质量报告。"],
+          majors: ["计算机类", "电子信息类", "工程管理", "智能建造"],
+          data: [{ year: "2025 示例", minScore: 568, minRank: 30200, gap: "高约 2600 位", source: "第三方初筛库示例" }],
+          outcome: "硕士点、推免情况待核；就业质量报告需回学校官网查询。",
+          risks: ["热门专业波动较大。", "学费和办学性质需家长明确接受。", "专业组若混入不接受方向，不宜盲填。"],
+          advice: "放在冲刺尾部，只在家庭接受学费和院校性质后保留。"
+        },
+        {
+          id: "s2", tier: "冲", feedback: "喜欢", name: "四川轻化工大学（示例）", city: "自贡 / 宜宾",
+          tag: "省内工科和轻化工背景较清楚的公办本科",
+          why: "专业方向与工科应用、自动化、计算机较贴近，适合想兼顾公办和专业出口的家庭。",
+          features: ["化工、食品、材料、自动化等行业背景较明显。", "宜宾、自贡校区与本地产业有合作空间。", "适合关注应用型工程、生产制造、质量控制等就业方向。"],
+          majors: ["自动化", "计算机科学与技术", "机械设计制造", "食品科学与工程"],
+          data: [{ year: "2025 示例", minScore: 566, minRank: 30950, gap: "高约 1850 位", source: "第三方初筛库示例" }],
+          outcome: "是否有相关硕士点需按学院逐一核实；考研氛围可查学院升学去向。",
+          risks: ["多校区安排需核。", "轻化工类专业孩子是否接受要提前沟通。", "若招生人数缩减，冲刺风险会上升。"],
+          advice: "放在冲刺核心，专业组干净时可重点考虑。"
+        },
+        {
+          id: "s3", tier: "冲", feedback: "喜欢", name: "重庆理工大学（示例）", city: "重庆",
+          tag: "汽车、机械、电子信息方向有行业辨识度",
+          why: "重庆城市资源强，车辆、机械、电子类方向与就业目标匹配，但热门专业通常不低。",
+          features: ["车辆工程、机械、电子信息等方向行业辨识度较强。", "重庆汽车和电子产业链提供实习就业场景。", "适合愿意出省、看重城市产业机会的家庭。"],
+          majors: ["车辆工程", "电子信息工程", "数据科学", "软件工程"],
+          data: [{ year: "2025 示例", minScore: 565, minRank: 31500, gap: "高约 1300 位", source: "第三方初筛库示例" }],
+          outcome: "硕士点和就业质量报告需官网复核；车辆和电子类就业方向相对明确。",
+          risks: ["城市热度带来分数波动。", "热门专业可能高于学校最低线。", "出省生活成本和适应度需沟通。"],
+          advice: "作为好学校冲刺路线的代表，保留但不重押。"
+        },
+        {
+          id: "s4", tier: "稳", feedback: "喜欢", name: "成都工业学院（示例）", city: "成都",
+          tag: "成都本地偏智能制造和工程应用型公办本科",
+          why: "分数位置和城市偏好匹配，适合就业导向家庭重点看。",
+          features: ["智能制造、机械电子、软件相关方向适合应用型培养。", "成都电子信息和装备制造产业资源较多。", "校企合作、实训项目、工程实践课程是重点核查点。"],
+          majors: ["智能制造工程", "软件工程", "机械电子工程", "物联网工程"],
+          data: [{ year: "2025 示例", minScore: 559, minRank: 34000, gap: "低约 1200 位", source: "第三方初筛库示例" }],
+          outcome: "硕士点情况待核；就业质量报告应重点看成都本地就业比例。",
+          risks: ["专业组可能混入非首选工程方向。", "热门软件类分数可能高于最低线。", "校区安排需核。"],
+          advice: "稳档核心候选，建议重点核专业组明细。"
+        },
+        {
+          id: "s5", tier: "稳", feedback: "喜欢", name: "西华大学（示例）", city: "成都",
+          tag: "省属综合性大学，工科基础和成都资源较均衡",
+          why: "比纯应用型院校平台更综合，适合兼顾学校层次和专业选择。",
+          features: ["机械、车辆、能源、电气等传统工科基础较多。", "综合性校园选择面更宽，后续转向经管或工科交叉也有空间。", "成都资源对实习、考研信息和就业面试更友好。"],
+          majors: ["机械类", "车辆工程", "计算机类", "能源动力"],
+          data: [{ year: "2025 示例", minScore: 557, minRank: 35200, gap: "低约 2400 位", source: "第三方初筛库示例" }],
+          outcome: "硕士点情况较值得细查；就业质量报告看制造、IT、国企比例。",
+          risks: ["学校最低线不等于目标专业线。", "若专业组里有冷门专业，需确认能否接受。", "部分专业竞争可能偏热。"],
+          advice: "稳档核心候选，适合放在主方案中段。"
+        },
+        {
+          id: "s6", tier: "稳", feedback: "喜欢", name: "成都大学（示例）", city: "成都",
+          tag: "城市资源强，适合就业和实习导向",
+          why: "如果家庭看重成都实习、生活便利和就业机会，这类学校要重点比较。",
+          features: ["城市资源是明显优势，适合提前接触实习和项目。", "数据、网络、数字媒体等方向与城市产业更容易连接。", "综合性环境较适合不想太早被单一行业锁定的学生。"],
+          majors: ["数据科学与大数据技术", "网络工程", "数字媒体技术", "工商管理类"],
+          data: [{ year: "2025 示例", minScore: 555, minRank: 36100, gap: "低约 3300 位", source: "第三方初筛库示例" }],
+          outcome: "升学和硕士点需按学院核实；就业可重点看信息技术、文创和服务业流向。",
+          risks: ["城市热度可能推高热门专业。", "专业组若含经管类，需确认家庭接受度。", "招生人数变化会影响稳定性。"],
+          advice: "稳档重点候选，适合城市优先路线。"
+        },
+        {
+          id: "s7", tier: "稳", feedback: "待查", name: "绵阳师范学院（示例）", city: "绵阳",
+          tag: "风险温和的省内公办本科，需确认师范属性接受度",
+          why: "分数安全度较好，但家庭若排斥师范背景，需要先沟通。",
+          features: ["绵阳有电子信息和科研院所资源，理工方向可继续细查。", "学校整体风险相对温和，适合稳中偏保。", "若目标是教师或教育信息化，可另作路线。"],
+          majors: ["计算机科学与技术", "电子信息科学", "信息管理", "教育技术"],
+          data: [{ year: "2025 示例", minScore: 552, minRank: 37600, gap: "低约 4800 位", source: "第三方初筛库示例" }],
+          outcome: "师范类和非师范类专业边界需核；升学情况待查。",
+          risks: ["专业是否师范方向要看招生计划。", "城市资源弱于成都。", "孩子若明确不想师范，要降权。"],
+          advice: "作为稳中偏保备份，不建议放在最前。"
+        },
+        {
+          id: "s8", tier: "保", feedback: "喜欢", name: "宜宾学院（示例）", city: "宜宾",
+          tag: "保底空间较好的省内公办本科",
+          why: "在保证本科录取的同时，仍保留电子信息和软件相关方向。",
+          features: ["宜宾近年产业投入较多，电子信息、新能源相关资源可关注。", "适合稳妥家庭作为保底核心。", "如果专业组干净，实际可接受度较高。"],
+          majors: ["电子信息工程", "软件工程", "数据科学", "机械电子"],
+          data: [{ year: "2025 示例", minScore: 548, minRank: 40200, gap: "低约 7400 位", source: "第三方初筛库示例" }],
+          outcome: "就业质量报告和校企合作需核；硕士点情况待查。",
+          risks: ["学校层次不如成都稳档。", "具体专业实力要看学院。", "若孩子强烈想留成都，接受度下降。"],
+          advice: "保档核心候选，建议保留。"
+        },
+        {
+          id: "s9", tier: "保", feedback: "犹豫", name: "内江师范学院（示例）", city: "内江",
+          tag: "用于托底的省内公办本科",
+          why: "主要作用是保证录取确定性，适合放在后段兜底。",
+          features: ["计算机、物联网等方向可作为基础选择。", "生活成本相对可控，录取压力相对温和。", "适合对城市要求不高、强调公办稳妥的家庭。"],
+          majors: ["计算机科学与技术", "物联网工程", "电子商务", "数学与应用数学"],
+          data: [{ year: "2025 示例", minScore: 545, minRank: 41800, gap: "低约 9000 位", source: "第三方初筛库示例" }],
+          outcome: "升学、就业质量报告待核；师范类专业需明确是否接受。",
+          risks: ["城市产业机会有限。", "若专业组混入不接受师范或基础学科，需要谨慎。", "对学校层次期待较高时满意度可能不足。"],
+          advice: "保底备份，不建议作为家庭首选。"
+        },
+        {
+          id: "s10", tier: "保", feedback: "待查", name: "攀枝花学院（示例）", city: "攀枝花",
+          tag: "偏资源、材料、工程方向的保底选择",
+          why: "安全垫较厚，但城市距离和专业接受度要先沟通。",
+          features: ["材料、冶金、电气、机械等方向与当地产业关联更强。", "适合愿意接受区域行业特色的学生。", "保底作用强于平台吸引力。"],
+          majors: ["电气工程", "材料科学", "机械工程", "土木工程"],
+          data: [{ year: "2025 示例", minScore: 542, minRank: 43600, gap: "低约 10800 位", source: "第三方初筛库示例" }],
+          outcome: "就业去向需查质量报告；升学潜力待核。",
+          risks: ["距离和气候适应度。", "材料、冶金类是否接受。", "专业组如果不干净，保底价值会下降。"],
+          advice: "作为保底末端或备选，需家长先确认城市接受度。"
+        },
+        {
+          id: "s11", tier: "备选", feedback: "待查", name: "省外行业特色院校 A（示例）", city: "长三角普通地级市",
+          tag: "行业方向清楚的省外扩展池",
+          why: "如果家庭愿意出省，可用来增加专业匹配机会，避免只在本省卷热门城市。",
+          features: ["交通运输、物流工程、工业工程等方向更聚焦。", "靠近长三角产业链，实习机会可能更广。", "适合专业优先、地域可商量的家庭。"],
+          majors: ["交通运输", "物流工程", "工业工程", "数据管理"],
+          data: [{ year: "2025 示例", minScore: 550, minRank: 38900, gap: "低约 6100 位", source: "第三方初筛库示例" }],
+          outcome: "行业就业报告、区域就业比例需核；回川就业认可度需问清。",
+          risks: ["家长和孩子是否接受出省。", "学校名气在本地可能不强。", "交通运输类专业适配度需沟通。"],
+          advice: "备选扩展池，不进入主线前需二次沟通。"
+        },
+        {
+          id: "s12", tier: "备选", feedback: "待查", name: "省外公办本科 B（示例）", city: "华中区域中心",
+          tag: "分数友好、城市尚可的省外公办选项",
+          why: "用于补充本省方案，防止同质化候选太多。",
+          features: ["计算机、管理科学、电子商务等方向覆盖面较宽。", "区域中心城市提供基本实习和考研信息环境。", "适合把专业安全放在学校名气之前的家庭。"],
+          majors: ["计算机类", "管理科学", "电子商务", "信息安全"],
+          data: [{ year: "2025 示例", minScore: 547, minRank: 40700, gap: "低约 7900 位", source: "第三方初筛库示例" }],
+          outcome: "硕士点、就业行业和学校认可度均待核。",
+          risks: ["学校辨识度需进一步确认。", "专业组如果含大量经管类，需看家庭态度。", "省外招生人数少时波动可能大。"],
+          advice: "备选，不宜替代本省稳档核心。"
+        }
+      ],
+      majorGroupRisks: [
+        { group: "计算机 / 电子信息混合组（示例）", contains: "计算机、软件、电子信息、物联网、通信工程", likes: "计算机、软件、物联网", accepts: "电子信息、通信工程", avoid: "无明显排斥，但需看是否含高收费软件方向", transferRisk: "中等：热门专业调剂概率较高", feeRisk: "需查是否有高收费或中外合作", campusRisk: "部分学校可能不同校区", physicalRisk: "一般较少，但仍需查体检条款", missingPlan: "需要查当年省招生计划书和高校招生网专业组明细。" },
+        { group: "机械 / 材料 / 化工混合组（示例）", contains: "机械、材料、化工、环境、食品", likes: "机械、自动化相关", accepts: "食品、环境视情况", avoid: "化工、材料若孩子明确排斥需避开", transferRisk: "较高：组内冷热差异明显", feeRisk: "通常不高，但需核实验班或中外合作", campusRisk: "校区变化需核", physicalRisk: "化工、食品类可能有色觉要求", missingPlan: "专业组明细未查到时，不能只看学校最低分。" },
+        { group: "经管 / 法学 / 公共管理组（示例）", contains: "工商管理、会计、法学、公共事业管理、经济学", likes: "会计、数据管理可沟通", accepts: "工商管理视学校而定", avoid: "法学、纯经济如家庭排斥则降权", transferRisk: "中等：专业满意度取决于孩子兴趣", feeRisk: "一般较低", campusRisk: "通常风险较低", physicalRisk: "少见", missingPlan: "若家庭明确不选经法师范，该组不作为核心候选。" },
+        { group: "师范 / 基础学科组（示例）", contains: "数学、物理、教育技术、师范类计算机", likes: "数学、信息技术可作为升学方向", accepts: "教育技术视职业目标", avoid: "明确不从教则避开师范强绑定专业", transferRisk: "中等偏高", feeRisk: "一般较低", campusRisk: "需核", physicalRisk: "师范类可能有体检和教师资格要求", missingPlan: "需查招生章程确认是否师范方向、是否有定向或专项属性。" }
+      ],
+      routeComparisons: [
+        { name: "城市优先路线", fit: "适合看重成都、重庆等城市资源，希望大学期间多接触实习和项目的家庭。", gain: "城市资源、信息密度、实习机会更好。", sacrifice: "可能牺牲一点学校层次或专业安全边际。", recommend: "成都大学、成都工业学院、重庆理工大学（示例）。", risk: "热门城市专业分数波动大，不能压线填太满。" },
+        { name: "专业优先路线", fit: "适合孩子对计算机、电子、智能制造等方向比较明确的家庭。", gain: "专业满意度和后续就业方向更清楚。", sacrifice: "可能接受城市或学校名气一般的院校。", recommend: "四川轻化工大学、成都工业学院、宜宾学院（示例）。", risk: "要避开组内混入明显不喜欢专业。" },
+        { name: "升学潜力路线", fit: "适合本科后有考研计划、愿意看学院基础和学习氛围的家庭。", gain: "更重视硕士点、学科基础、考研去向。", sacrifice: "不一定选择最热城市或最容易就业的专业。", recommend: "西华大学、四川轻化工大学、省外行业特色院校 A（示例）。", risk: "硕士点和真实考研氛围必须逐校核实，不能听宣传。" },
+        { name: "公办稳妥路线", fit: "适合更看重录取确定性、学费可控和家庭安心度的家庭。", gain: "本科录取把握较高，调剂和费用风险更容易控制。", sacrifice: "学校层次和城市资源可能不如冲刺方案。", recommend: "宜宾学院、内江师范学院、攀枝花学院（示例）。", risk: "孩子满意度和城市接受度要提前沟通，不能只看稳。" }
+      ],
+      checklist: [
+        "省考试院招生计划书",
+        "专业组包含专业",
+        "当年招生人数变化",
+        "近三年最低分和最低位次",
+        "学费",
+        "校区",
+        "转专业政策",
+        "保研 / 硕士点 / 升学情况",
+        "就业质量报告",
+        "体检限制",
+        "中外合作或高收费说明",
+        "单设志愿、地方专项、国家专项、优师计划等特殊批次"
+      ],
+      sources: [
+        { type: "官方来源", note: "省考试院招生计划书、投档线、录取结果查询。正式填报以此为准。" },
+        { type: "学校官网", note: "高校招生网、招生章程、学院介绍、就业质量报告、专业培养方案。" },
+        { type: "本地录取数据库", note: "用于整理近三年最低分、最低位次、招生人数变化，需与官方数据互相校验。" },
+        { type: "第三方平台", note: "仅作初筛参考，正式填报前需回到省考试院和高校招生网复核。" }
+      ]
+    };
+
+    const tierClass = { "冲": "tier-reach", "稳": "tier-match", "保": "tier-safe", "备选": "tier-backup" };
+
+    function el(tag, attrs = {}, children = []) {
+      const node = document.createElement(tag);
+      Object.entries(attrs).forEach(([key, value]) => {
+        if (key === "class") node.className = value;
+        else if (key === "html") node.innerHTML = value;
+        else node.setAttribute(key, value);
+      });
+      children.forEach(child => node.append(child));
+      return node;
+    }
+
+    function renderProfile() {
+      const p = reportData.studentProfile;
+      document.getElementById("studentTitle").replaceChildren(
+        el("span", { class: "title-main" }, [`${p.province} ${p.score} 分`]),
+        el("span", { class: "title-subject" }, [p.subjectType])
+      );
+      document.getElementById("positionNote").textContent = p.positioning;
+      document.getElementById("coreTarget").textContent = p.coreTarget;
+      document.getElementById("riskPreference").textContent = p.riskPreference;
+      const profileItems = [
+        ["省份", p.province],
+        ["选科 / 科类", p.subjectType],
+        ["分数", `${p.score} 分`],
+        ["位次", `${p.rank.toLocaleString("zh-CN")} 位`],
+        ["批次", p.batch],
+        ["方案状态", "填报前复核"]
+      ];
+      document.getElementById("profileList").replaceChildren(...profileItems.map(([label, value]) =>
+        el("div", { class: "profile-item" }, [el("span", {}, [label]), el("strong", {}, [value])])
+      ));
+      document.getElementById("goalGrid").replaceChildren(...p.goals.map(goal =>
+        el("div", { class: "goal" }, [el("b", {}, [goal.name]), el("span", {}, [goal.note])])
+      ));
+    }
+
+    function renderLogic() {
+      const s = reportData.strategySummary;
+      const cards = [
+        ["本次怎么筛", [s.explanation]],
+        ["优先方向", s.priorities],
+        ["降权方向", s.downgraded]
+      ];
+      document.getElementById("logicGrid").replaceChildren(...cards.map(([title, items]) =>
+        el("article", { class: "paper logic-card" }, [
+          el("h3", {}, [title]),
+          el("ul", { class: "plain-list" }, items.map(item => el("li", {}, [item])))
+        ])
+      ));
+    }
+
+    function formatMajorGroup(value) {
+      return String(value || "")
+        .split(/；|;/)
+        .map(item => item.trim())
+        .filter(Boolean)
+        .map(item => {
+          const groupLike = /\d+.*?\/\d/.test(item);
+          const klass = groupLike ? "group-chip" : "group-chip group-note";
+          return `<span class="${klass}">${item}</span>`;
+        })
+        .join("");
+    }
+
+    function renderOverview() {
+      document.getElementById("overviewBody").replaceChildren(...reportData.recommendationTiers.map(row =>
+        el("tr", {}, [
+          el("td", { class: "overview-tier", "data-label": "档位", "data-school": row.school, html: `<span class="tier ${tierClass[row.tier]}">${row.tier}</span>` }),
+          el("td", { class: "overview-school keep-line", "data-label": "学校" }, [row.school]),
+          el("td", { class: "overview-city keep-line", "data-label": "城市" }, [row.city]),
+          el("td", { class: "overview-major overview-major-cell", "data-label": "专业", html: formatMajorGroup(row.majorGroup) }),
+          el("td", { class: "num", "data-label": "往年最低分" }, [`${row.minScore}`]),
+          el("td", { class: "num", "data-label": "往年最低位次" }, [`${row.minRank.toLocaleString("zh-CN")}`]),
+          el("td", { class: "num", "data-label": "位次差" }, [row.rankDiff]),
+          el("td", { class: "overview-reason-cell", "data-label": "推荐理由" }, [row.reason]),
+          el("td", { class: "overview-risk-cell", "data-label": "最大风险" }, [row.risk]),
+          el("td", { "data-label": "重点候选" }, [row.keyCandidate])
+        ])
+      ));
+    }
+
+    function renderSchools(filter = "all") {
+      const list = document.getElementById("schoolList");
+      const empty = document.getElementById("emptyState");
+      const status = document.getElementById("filterStatus");
+      const schools = reportData.schoolCards.filter(school => filter === "all" || school.tier === filter);
+      empty.style.display = schools.length ? "none" : "block";
+      status.textContent = filter === "all" ? `已显示全部 ${schools.length} 所学校。` : `已显示${filter}档 ${schools.length} 所学校。`;
+      list.replaceChildren(...schools.map((school, index) => {
+        const detailId = `school-detail-${school.id}`;
+        const titleId = `school-title-${school.id}`;
+        const isOpen = index < 2 && filter === "all";
+        const card = el("article", { class: `paper school-card${isOpen ? " open" : ""}`, "data-tier": school.tier, "aria-labelledby": titleId });
+        const button = el("button", { class: "school-button", type: "button", "aria-expanded": isOpen ? "true" : "false", "aria-controls": detailId }, [
+          el("div", { class: "school-title" }, [
+            el("div", { class: "school-meta" }, [
+              el("span", { class: `tier ${tierClass[school.tier]}` }, [school.tier]),
+              el("span", { class: "tag" }, [school.city]),
+              el("span", { class: "tag" }, [`方案状态：${school.feedback}`])
+            ]),
+            el("h3", { id: titleId }, [school.name]),
+            el("p", { class: "muted" }, [school.tag])
+          ]),
+          el("span", { class: "school-arrow", "aria-hidden": "true" }, ["⌄"])
+        ]);
+        const detail = el("div", { class: "school-detail", id: detailId }, [
+          el("div", { class: "detail-grid" }, [
+            el("div", { class: "detail-box" }, [el("h4", {}, ["入选理由"]), el("p", {}, [school.why])]),
+            el("div", { class: "detail-box" }, [el("h4", {}, ["填报建议"]), el("p", {}, [school.advice])]),
+            el("div", { class: "detail-box" }, [el("h4", {}, ["学校特色"]), el("ul", {}, school.features.map(item => el("li", {}, [item])))]),
+            el("div", { class: "detail-box" }, [el("h4", {}, ["相关专业组 / 专业"]), el("p", {}, [school.majors.join("、")])]),
+            el("div", { class: "detail-box" }, [el("h4", {}, ["录取数据"]), el("p", {}, school.data.map(d => `${d.year}：最低分 ${d.minScore}，最低位次 ${d.minRank.toLocaleString("zh-CN")}，与考生相比${d.gap}。来源：${d.source}。`))]),
+            el("div", { class: "detail-box" }, [el("h4", {}, ["就业 / 升学信息"]), el("p", {}, [school.outcome])]),
+            el("div", { class: "detail-box" }, [el("h4", {}, ["风险提醒"]), el("ul", {}, school.risks.map(item => el("li", {}, [item])))]),
+            el("div", { class: "detail-box" }, [el("h4", {}, ["方案状态"]), el("p", {}, [school.feedback])])
+          ])
+        ]);
+        button.addEventListener("click", () => {
+          const open = card.classList.toggle("open");
+          button.setAttribute("aria-expanded", String(open));
+        });
+        card.append(button, detail);
+        return card;
+      }));
+    }
+
+    function renderRisks() {
+      document.getElementById("riskGrid").replaceChildren(...reportData.majorGroupRisks.map(risk =>
+        el("article", { class: "paper risk-card" }, [
+          el("h3", {}, [risk.group]),
+          el("p", { class: "muted" }, [risk.missingPlan]),
+          el("div", { class: "risk-rows" }, [
+            ["组内专业", risk.contains],
+            ["匹配方向", risk.likes],
+            ["可以接受", risk.accepts],
+            ["需要避开", risk.avoid],
+            ["调剂风险", risk.transferRisk],
+            ["收费风险", risk.feeRisk],
+            ["校区风险", risk.campusRisk],
+            ["体检限制", risk.physicalRisk]
+          ].map(([label, value]) => el("div", { class: "risk-row" }, [el("span", { class: "muted" }, [label]), el("span", {}, [value])])))
+        ])
+      ));
+    }
+
+    function renderRoutes() {
+      document.getElementById("routeGrid").replaceChildren(...reportData.routeComparisons.map(route =>
+        el("article", { class: "paper route-card" }, [
+          el("h3", {}, [route.name]),
+          ...[
+            ["适合家庭", route.fit],
+            ["能拿到", route.gain],
+            ["要牺牲", route.sacrifice],
+            ["推荐学校 / 专业", route.recommend],
+            ["最大风险", route.risk]
+          ].map(([label, value]) => el("div", { class: "route-line" }, [el("span", {}, [label]), el("strong", {}, [value])]))
+        ])
+      ));
+    }
+
+    function renderChecklist() {
+      document.getElementById("checkGrid").replaceChildren(...reportData.checklist.map((item, index) =>
+        el("label", { class: "check-item" }, [
+          el("input", { type: "checkbox", "aria-label": item }),
+          el("span", {}, [`${String(index + 1).padStart(2, "0")} · ${item}`])
+        ])
+      ));
+    }
+
+    function renderSources() {
+      document.getElementById("sourceGrid").replaceChildren(...reportData.sources.map(source =>
+        el("article", { class: "paper source-card" }, [el("h3", {}, [source.type]), el("p", {}, [source.note])])
+      ));
+    }
+
+    function bindFilters() {
+      document.querySelectorAll(".filter-btn").forEach(button => {
+        button.addEventListener("click", () => {
+          document.querySelectorAll(".filter-btn").forEach(btn => {
+            btn.classList.remove("active");
+            btn.setAttribute("aria-pressed", "false");
+          });
+          button.classList.add("active");
+          button.setAttribute("aria-pressed", "true");
+          renderSchools(button.dataset.filter);
+        });
+      });
+      document.getElementById("printReport").addEventListener("click", () => window.print());
+    }
+
+    function showFatalState(message) {
+      const fatal = document.getElementById("fatalState");
+      fatal.textContent = message;
+      fatal.style.display = "block";
+    }
+
+    function validateReportData() {
+      const requiredKeys = ["studentProfile", "strategySummary", "recommendationTiers", "schoolCards", "majorGroupRisks", "routeComparisons", "checklist", "sources"];
+      return requiredKeys.every(key => Object.prototype.hasOwnProperty.call(reportData, key));
+    }
+
+    try {
+      if (!validateReportData()) {
+        throw new Error("报告数据缺少必需的八个顶层字段。");
+      }
+      renderProfile();
+      renderLogic();
+      renderOverview();
+      renderSchools();
+      renderRisks();
+      renderRoutes();
+      renderChecklist();
+      renderSources();
+      bindFilters();
+    } catch (error) {
+      showFatalState("报告数据暂时无法渲染：请检查脚本中的八个顶层字段是否完整。");
+    }
+  </script>
+</body>
+</html>

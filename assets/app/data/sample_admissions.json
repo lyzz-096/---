@@ -1,0 +1,122 @@
+[
+  {
+    "year": 2025,
+    "province": "湖北",
+    "subject_type": "物理类",
+    "school_name": "武汉理工大学",
+    "major_name": "电子信息类",
+    "city": "武汉",
+    "min_score": 592,
+    "min_rank": 23800,
+    "school_level": "211 双一流",
+    "tags": ["工科", "就业", "交通"]
+  },
+  {
+    "year": 2025,
+    "province": "湖北",
+    "subject_type": "物理类",
+    "school_name": "湖北大学",
+    "major_name": "计算机科学与技术",
+    "city": "武汉",
+    "min_score": 579,
+    "min_rank": 28600,
+    "school_level": "省重点",
+    "tags": ["计算机", "就业"]
+  },
+  {
+    "year": 2025,
+    "province": "湖北",
+    "subject_type": "物理类",
+    "school_name": "武汉科技大学",
+    "major_name": "自动化",
+    "city": "武汉",
+    "min_score": 575,
+    "min_rank": 31200,
+    "school_level": "省重点",
+    "tags": ["工科", "就业", "国企"]
+  },
+  {
+    "year": 2025,
+    "province": "湖北",
+    "subject_type": "物理类",
+    "school_name": "三峡大学",
+    "major_name": "电气工程及其自动化",
+    "city": "宜昌",
+    "min_score": 566,
+    "min_rank": 36500,
+    "school_level": "省重点",
+    "tags": ["电网", "就业", "工科"]
+  },
+  {
+    "year": 2025,
+    "province": "湖北",
+    "subject_type": "物理类",
+    "school_name": "武汉工程大学",
+    "major_name": "软件工程",
+    "city": "武汉",
+    "min_score": 568,
+    "min_rank": 34800,
+    "school_level": "省重点",
+    "tags": ["计算机", "就业"]
+  },
+  {
+    "year": 2025,
+    "province": "湖北",
+    "subject_type": "物理类",
+    "school_name": "华中农业大学",
+    "major_name": "数据科学与大数据技术",
+    "city": "武汉",
+    "min_score": 584,
+    "min_rank": 26700,
+    "school_level": "211 双一流",
+    "tags": ["计算机", "科研"]
+  },
+  {
+    "year": 2025,
+    "province": "湖北",
+    "subject_type": "历史类",
+    "school_name": "中南财经政法大学",
+    "major_name": "法学",
+    "city": "武汉",
+    "min_score": 592,
+    "min_rank": 4100,
+    "school_level": "211 双一流",
+    "tags": ["法学", "考公"]
+  },
+  {
+    "year": 2025,
+    "province": "湖北",
+    "subject_type": "历史类",
+    "school_name": "湖北大学",
+    "major_name": "汉语言文学",
+    "city": "武汉",
+    "min_score": 558,
+    "min_rank": 8300,
+    "school_level": "省重点",
+    "tags": ["师范", "考编"]
+  },
+  {
+    "year": 2025,
+    "province": "广东",
+    "subject_type": "物理类",
+    "school_name": "深圳大学",
+    "major_name": "计算机科学与技术",
+    "city": "深圳",
+    "min_score": 611,
+    "min_rank": 21400,
+    "school_level": "省重点",
+    "tags": ["计算机", "高薪"]
+  },
+  {
+    "year": 2025,
+    "province": "广东",
+    "subject_type": "物理类",
+    "school_name": "广东工业大学",
+    "major_name": "自动化",
+    "city": "广州",
+    "min_score": 587,
+    "min_rank": 35600,
+    "school_level": "省重点",
+    "tags": ["工科", "就业"]
+  }
+]

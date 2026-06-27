@@ -1,0 +1,368 @@
+{
+  "北京": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "北京教育考试院",
+      "url": "https://www.bjeea.cn/",
+      "source_type": "exam_official",
+      "snippet": "北京教育考试院官网。北京高考政策、分数线、一分一段、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "一分一段", "分数线", "投档", "录取"]
+    },
+    {
+      "purpose": ["分数转位次"],
+      "title": "北京市2025年高考考生分数分布",
+      "url": "https://www.bjeea.cn/html/gkgz/tzgg/2025/0625/87165.html",
+      "source_type": "exam_official",
+      "snippet": "北京教育考试院发布的2025年高考考生分数分布页面，含官方 PDF 附件，已用于北京综合分数转位次。",
+      "query_hints": ["2025", "高考", "分数分布", "累计人数", "位次"]
+    }
+  ],
+  "天津": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "天津招考资讯网",
+      "url": "https://www.zhaokao.net/",
+      "source_type": "exam_official",
+      "snippet": "天津市教育招生考试院招考资讯网。天津高考成绩、分数段、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "分数段", "分数线", "投档", "录取"]
+    }
+  ],
+  "河北": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "河北省教育考试院",
+      "url": "https://www.hebeea.edu.cn/",
+      "source_type": "exam_official",
+      "snippet": "河北省教育考试院官网。河北高考一分一档、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "一分一档", "分数线", "投档", "录取"]
+    }
+  ],
+  "山西": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "山西招生考试网",
+      "url": "http://www.sxkszx.cn/",
+      "source_type": "exam_official",
+      "snippet": "山西省招生考试管理中心官网。山西高考成绩分段、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "成绩分段", "分数线", "投档", "录取"]
+    }
+  ],
+  "内蒙古": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "内蒙古招生考试信息网",
+      "url": "https://www.nm.zsks.cn/",
+      "source_type": "exam_official",
+      "snippet": "内蒙古自治区教育招生考试中心官网。内蒙古高考分数段、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "分数段", "网报", "投档", "录取"]
+    }
+  ],
+  "辽宁": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "辽宁招生考试之窗",
+      "url": "https://www.lnzsks.com/",
+      "source_type": "exam_official",
+      "snippet": "辽宁省高中等教育招生考试委员会办公室官网。辽宁高考成绩统计表、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "成绩统计表", "分数线", "投档", "录取"]
+    }
+  ],
+  "吉林": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "吉林省教育考试院",
+      "url": "http://www.jleea.edu.cn/",
+      "source_type": "exam_official",
+      "snippet": "吉林省教育考试院官网。吉林高考一分段、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "一分段", "分数线", "投档", "录取"]
+    }
+  ],
+  "黑龙江": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "黑龙江省招生考试信息港",
+      "url": "https://www.lzk.hl.cn/",
+      "source_type": "exam_official",
+      "snippet": "黑龙江省招生考试院官网。黑龙江高考成绩分段、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "成绩分段", "分数线", "投档", "录取"]
+    }
+  ],
+  "上海": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "上海市教育考试院",
+      "url": "https://www.shmeea.edu.cn/",
+      "source_type": "exam_official",
+      "snippet": "上海市教育考试院官网。上海秋季高考分数段、投档线、录取信息优先从这里查找。",
+      "query_hints": ["秋季高考", "分数段", "投档线", "录取"]
+    }
+  ],
+  "江苏": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "江苏省教育考试院",
+      "url": "https://www.jseea.cn/",
+      "source_type": "exam_official",
+      "snippet": "江苏省教育考试院官网。江苏高考逐分段、分数线、投档线、录取信息优先从这里查找。",
+      "query_hints": ["高考", "逐分段", "分数线", "投档线", "录取"]
+    }
+  ],
+  "浙江": [
+    {
+      "purpose": ["分数转位次"],
+      "title": "浙江省教育考试院官网 - 统一高考",
+      "url": "https://www.zjzs.net/col/col45/index.html",
+      "source_type": "exam_official",
+      "snippet": "浙江省教育考试院统一高考栏目。浙江一分一段表、成绩分数段表、各类别分数线等优先从这里查找。",
+      "query_hints": ["一分一段", "成绩分数段表", "位次", "高考"]
+    },
+    {
+      "purpose": ["专业方向候选院校", "高校专业录取数据"],
+      "title": "浙江省2025年普通高校招生普通类第一段平行投档分数线表",
+      "url": "https://www.zjzs.net/art/2025/7/21/art_45_11467.html",
+      "source_type": "exam_official",
+      "snippet": "浙江省教育考试院发布的2025年普通类第一段平行投档分数线表，页面内提供 xls 下载入口，适合查询浙江普通类院校专业投档分、位次号。",
+      "query_hints": ["普通类第一段", "平行投档", "投档分数线", "位次号", "录取"]
+    },
+    {
+      "purpose": ["专业方向候选院校", "高校专业录取数据"],
+      "title": "浙江省2025年普通高校招生普通类第一段平行投档分数线表.xls",
+      "url": "https://www.zjzs.net/module/download/downfile.jsp?classid=0&filename=8d8d48bdfabe4347b73ccc6009f328e4.xls&showname=%E6%B5%99%E6%B1%9F%E7%9C%812025%E5%B9%B4%E6%99%AE%E9%80%9A%E9%AB%98%E6%A0%A1%E6%8B%9B%E7%94%9F%E6%99%AE%E9%80%9A%E7%B1%BB%E7%AC%AC%E4%B8%80%E6%AE%B5%E5%B9%B3%E8%A1%8C%E6%8A%95%E6%A1%A3%E5%88%86%E6%95%B0%E7%BA%BF%E8%A1%A8.xls",
+      "source_type": "exam_official",
+      "snippet": "浙江省教育考试院官方 Excel 下载入口。适合批量导入本地 2025 浙江投档分、位次号数据。",
+      "query_hints": ["xls", "投档分数线", "位次号", "普通类第一段"]
+    }
+  ],
+  "安徽": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "安徽省教育招生考试院",
+      "url": "https://www.ahzsks.cn/",
+      "source_type": "exam_official",
+      "snippet": "安徽省教育招生考试院官网。安徽高考成绩分档、一分一段、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "一分一段", "成绩分档", "投档", "录取"]
+    }
+  ],
+  "福建": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "福建省教育考试院",
+      "url": "https://www.eeafj.cn/",
+      "source_type": "exam_official",
+      "snippet": "福建省教育考试院官网。福建高考成绩分布、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "成绩分布", "分数线", "投档", "录取"]
+    }
+  ],
+  "江西": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "江西省教育考试院",
+      "url": "http://www.jxeea.cn/",
+      "source_type": "exam_official",
+      "snippet": "江西省教育考试院官网。江西高考一分一段、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "一分一段", "分数线", "投档", "录取"]
+    }
+  ],
+  "山东": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "山东省教育招生考试院",
+      "url": "https://www.sdzk.cn/",
+      "source_type": "exam_official",
+      "snippet": "山东省教育招生考试院官网。山东高考一分一段、常规批投档、录取信息优先从这里查找。",
+      "query_hints": ["高考", "一分一段", "常规批", "投档", "录取"]
+    }
+  ],
+  "河南": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "河南省教育考试院",
+      "url": "http://www.haeea.cn/",
+      "source_type": "exam_official",
+      "snippet": "河南省教育考试院官网。河南高考一分一段、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "一分一段", "分数线", "投档", "录取"]
+    }
+  ],
+  "湖北": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "湖北省教育考试院",
+      "url": "https://www.hbea.edu.cn/",
+      "source_type": "exam_official",
+      "snippet": "湖北省教育考试院官网。湖北高考一分一段、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "一分一段", "分数线", "投档", "录取"]
+    },
+    {
+      "purpose": ["分数转位次"],
+      "title": "湖北省2025年普通高考总分一分一段统计表-普通类",
+      "url": "https://www.hbea.edu.cn/html/2025-06/15292.html",
+      "source_type": "exam_official",
+      "snippet": "湖北省教育考试院发布的2025年普通高考总分一分一段统计表，含首选物理、首选历史。",
+      "query_hints": ["2025", "一分一段", "首选物理", "首选历史", "位次"]
+    }
+  ],
+  "湖南": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "湖南省教育考试院",
+      "url": "https://jyt.hunan.gov.cn/sjyt/hnsjyksy/",
+      "source_type": "exam_official",
+      "snippet": "湖南省教育考试院官网。湖南高考一分段、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "一分段", "分数线", "投档", "录取"]
+    }
+  ],
+  "广东": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "广东省教育考试院",
+      "url": "https://eea.gd.gov.cn/",
+      "source_type": "exam_official",
+      "snippet": "广东省教育考试院官网。广东高考一分一段、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "一分一段", "分数线", "投档", "录取"]
+    },
+    {
+      "purpose": ["分数转位次"],
+      "title": "广东省2025年高考分数段统计表",
+      "url": "https://eea.gd.gov.cn/ptgk/content/post_4734345.html",
+      "source_type": "exam_official",
+      "snippet": "广东省教育考试院发布的2025年高考各科类各分数段成绩数据，附件为官方 zip，已导入普通类物理、历史分数段。",
+      "query_hints": ["2025", "分数段统计表", "普通类", "物理", "历史", "位次"]
+    }
+  ],
+  "广西": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "广西招生考试院",
+      "url": "https://www.gxeea.cn/",
+      "source_type": "exam_official",
+      "snippet": "广西招生考试院官网。广西高考一分一档、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "一分一档", "分数线", "投档", "录取"]
+    }
+  ],
+  "海南": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "海南省考试局",
+      "url": "https://ea.hainan.gov.cn/",
+      "source_type": "exam_official",
+      "snippet": "海南省考试局官网。海南高考成绩分布、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "成绩分布", "分数线", "投档", "录取"]
+    }
+  ],
+  "重庆": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "重庆市教育考试院",
+      "url": "https://www.cqksy.cn/",
+      "source_type": "exam_official",
+      "snippet": "重庆市教育考试院官网。重庆高考一分段、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "一分段", "分数线", "投档", "录取"]
+    },
+    {
+      "purpose": ["分数转位次"],
+      "title": "重庆市2025年各类考生分数段表",
+      "url": "https://www.cqksy.cn/uploadFile/infopub/2025/pg/yfd/fdb.htm",
+      "source_type": "exam_official",
+      "snippet": "重庆市教育考试院发布的2025年各类考生分数段表，含物理类、历史类一分段 HTML 表。",
+      "query_hints": ["2025", "一分段", "物理类", "历史类", "分数段表"]
+    }
+  ],
+  "四川": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "四川省教育考试院",
+      "url": "https://www.sceea.cn/",
+      "source_type": "exam_official",
+      "snippet": "四川省教育考试院官网。四川高考一分一段、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "一分一段", "分数线", "投档", "录取"]
+    }
+  ],
+  "贵州": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "贵州省招生考试院",
+      "url": "https://zsksy.guizhou.gov.cn/",
+      "source_type": "exam_official",
+      "snippet": "贵州省招生考试院官网。贵州高考一分一段、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "一分一段", "分数线", "投档", "录取"]
+    }
+  ],
+  "云南": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "云南省招生考试院",
+      "url": "https://www.ynzs.cn/",
+      "source_type": "exam_official",
+      "snippet": "云南省招生考试院官网。云南高考成绩分数段、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "成绩分数段", "分数线", "投档", "录取"]
+    }
+  ],
+  "西藏": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "西藏自治区教育考试院",
+      "url": "https://zsks.edu.xizang.gov.cn/",
+      "source_type": "exam_official",
+      "snippet": "西藏自治区教育考试院官网。西藏高考成绩分段、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "成绩分段", "分数线", "投档", "录取"]
+    }
+  ],
+  "陕西": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "陕西省教育考试院",
+      "url": "https://www.sneea.cn/",
+      "source_type": "exam_official",
+      "snippet": "陕西省教育考试院官网。陕西高考一分段、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "一分段", "分数线", "投档", "录取"]
+    },
+    {
+      "purpose": ["专业方向候选院校", "高校专业录取数据"],
+      "title": "陕西招生考试信息网",
+      "url": "https://www.sneac.com/",
+      "source_type": "exam_official",
+      "snippet": "陕西招生考试信息网。陕西高考招生录取、投档动态和公告可辅助从这里查找。",
+      "query_hints": ["高考", "招生", "投档", "录取"]
+    }
+  ],
+  "甘肃": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "甘肃省教育考试院",
+      "url": "https://www.ganseea.cn/",
+      "source_type": "exam_official",
+      "snippet": "甘肃省教育考试院官网。甘肃高考成绩分段、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "成绩分段", "分数线", "投档", "录取"]
+    }
+  ],
+  "青海": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "青海省教育考试网",
+      "url": "http://www.qhjyks.com/",
+      "source_type": "exam_official",
+      "snippet": "青海省教育考试网。青海高考成绩分段、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "成绩分段", "分数线", "投档", "录取"]
+    }
+  ],
+  "宁夏": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "宁夏教育考试院",
+      "url": "https://www.nxjyks.cn/",
+      "source_type": "exam_official",
+      "snippet": "宁夏教育考试院官网。宁夏高考一分段、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "一分段", "分数线", "投档", "录取"]
+    }
+  ],
+  "新疆": [
+    {
+      "purpose": ["分数转位次", "专业方向候选院校", "高校专业录取数据"],
+      "title": "新疆招生网",
+      "url": "https://www.xjzk.gov.cn/",
+      "source_type": "exam_official",
+      "snippet": "新疆教育考试院招生服务官网。新疆高考成绩分段、分数线、投档录取信息优先从这里查找。",
+      "query_hints": ["高考", "成绩分段", "分数线", "投档", "录取"]
+    }
+  ]
+}

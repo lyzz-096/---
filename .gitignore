@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.runtime/
+reports/
+outputs/
+
+assets/app/data/admission_clean.db
+assets/app/data/official_sources/
+
+.DS_Store
+Thumbs.db

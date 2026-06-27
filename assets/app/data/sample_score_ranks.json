@@ -1,0 +1,114 @@
+[
+  {
+    "year": 2025,
+    "province": "湖北",
+    "subject_type": "物理类",
+    "score": 610,
+    "rank": 15000
+  },
+  {
+    "year": 2025,
+    "province": "湖北",
+    "subject_type": "物理类",
+    "score": 600,
+    "rank": 20000
+  },
+  {
+    "year": 2025,
+    "province": "湖北",
+    "subject_type": "物理类",
+    "score": 590,
+    "rank": 24500
+  },
+  {
+    "year": 2025,
+    "province": "湖北",
+    "subject_type": "物理类",
+    "score": 580,
+    "rank": 28000
+  },
+  {
+    "year": 2025,
+    "province": "湖北",
+    "subject_type": "物理类",
+    "score": 570,
+    "rank": 33500
+  },
+  {
+    "year": 2025,
+    "province": "湖北",
+    "subject_type": "物理类",
+    "score": 560,
+    "rank": 39500
+  },
+  {
+    "year": 2025,
+    "province": "湖北",
+    "subject_type": "历史类",
+    "score": 590,
+    "rank": 4300
+  },
+  {
+    "year": 2025,
+    "province": "湖北",
+    "subject_type": "历史类",
+    "score": 580,
+    "rank": 5600
+  },
+  {
+    "year": 2025,
+    "province": "湖北",
+    "subject_type": "历史类",
+    "score": 570,
+    "rank": 6900
+  },
+  {
+    "year": 2025,
+    "province": "湖北",
+    "subject_type": "历史类",
+    "score": 560,
+    "rank": 8100
+  },
+  {
+    "year": 2025,
+    "province": "湖北",
+    "subject_type": "历史类",
+    "score": 550,
+    "rank": 9600
+  },
+  {
+    "year": 2025,
+    "province": "广东",
+    "subject_type": "物理类",
+    "score": 620,
+    "rank": 17500
+  },
+  {
+    "year": 2025,
+    "province": "广东",
+    "subject_type": "物理类",
+    "score": 610,
+    "rank": 21500
+  },
+  {
+    "year": 2025,
+    "province": "广东",
+    "subject_type": "物理类",
+    "score": 600,
+    "rank": 26500
+  },
+  {
+    "year": 2025,
+    "province": "广东",
+    "subject_type": "物理类",
+    "score": 590,
+    "rank": 33500
+  },
+  {
+    "year": 2025,
+    "province": "广东",
+    "subject_type": "物理类",
+    "score": 580,
+    "rank": 40500
+  }
+]
